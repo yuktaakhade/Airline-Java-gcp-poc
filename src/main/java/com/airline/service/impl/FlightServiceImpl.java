@@ -37,8 +37,9 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public Flight updateFlight(Flight flight) {
-//        Flight flight = flightRepository.findById(flightId).orElseThrow(()->new Exception("No Flight with Id: "+flightId));
+    public Flight updateFlight(int flightId, Flight flight) {
         return flightRepository.save(flight);
     }
+
+
 }

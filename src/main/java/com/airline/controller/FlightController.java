@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/flight")
+@CrossOrigin(origins = "http://localhost:3000")
 public class FlightController {
 
     @Autowired
@@ -44,10 +45,11 @@ public class FlightController {
     }
 
     //To update flight
-    @PutMapping("/")
-    public ResponseEntity<Flight> updateFlight(@RequestBody Flight flight){
-        Flight flight1 = flightService.updateFlight(flight);
-        return new ResponseEntity<Flight>(flight1,HttpStatus.OK);
+    @PutMapping("/{flightId}")
+    public ResponseEntity<Flight> updateFlight(@PathVariable("flightId") int flightId,@RequestBody Flight flight) throws Exception {
+        flight.setFlightId(flightId);
+        Flight flight1 = flightService.updateFlight(flightId,flight);
+        return new ResponseEntity<>(flight1,HttpStatus.OK);
     }
 
 }

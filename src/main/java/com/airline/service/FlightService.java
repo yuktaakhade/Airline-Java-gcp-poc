@@ -21,5 +21,5 @@ public interface FlightService {
     boolean deleteFlight(int flightId);
 
     //To Update Flight
-    Flight updateFlight(Flight flight);
+    Flight updateFlight(int flightId,Flight flight);
 }
