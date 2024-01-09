@@ -14,16 +14,16 @@ RUN mvn -B dependency:go-offline
 COPY src src
 
 # Build the application using Maven
-RUN mvn -B package
+RUN mvn -B clean install
 
 # Use an OpenJDK runtime as the base image
-FROM adoptopenjdk/openjdk17:alpine-jre
+FROM openjdk17:alpine-jre
 
 # Set the working directory inside the container
 WORKDIR /app
 
 # Copy the JAR file of the Spring Boot application from the builder image into the container
-COPY --from=builder /build/target/*.jar /app/airline-app.jar
+COPY --from=builder /build/target/airline-app.jar /app/airline-app.jar
 
 # Expose the port that the Spring Boot application will run on
 EXPOSE 9000

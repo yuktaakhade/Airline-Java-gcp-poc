@@ -75,7 +75,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-<!--		<finalName>airline-app</finalName>-->
+		<finalName>airline-app</finalName>
 	</build>
 
 </project>
