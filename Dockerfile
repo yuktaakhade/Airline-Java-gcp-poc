@@ -4,14 +4,17 @@ FROM maven:latest AS builder
 # Set the working directory inside the container
 WORKDIR /build
 
+#Copy Application from Github into container
+ADD https://github.com/ashiphsayyad32/Airline-App-Java.git .
+
 # Copy the Maven project file (pom.xml) into the container
-COPY pom.xml .
+# COPY pom.xml .
 
 # Download the Maven dependencies
-RUN mvn -B dependency:go-offline
+RUN mvn -B dependency:go-offline 
 
 # Copy the source code into the container
-COPY src src
+# COPY src src
 
 # Build the application using Maven
 RUN mvn -B clean install
