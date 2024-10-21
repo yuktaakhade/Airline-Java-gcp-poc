@@ -3,6 +3,15 @@ FROM openjdk:17
 
 # Set the working directory inside the container
 WORKDIR /app
+# connection with mysql
+ARG MYSQL_HOST_WITH_PORT
+ARG MYSQL_DB_NAME
+ARG MYSQL_USER
+ARG MYSQL_PASSWORD
+ENV MYSQL_HOST_WITH_PORT=$MYSQL_HOST_WITH_PORT
+ENV MYSQL_DB_NAME=$MYSQL_DB_NAME
+ENV MYSQL_USER=$MYSQL_USER
+ENV MYSQL_PASSWORD=$MYSQL_PASSWORD
 
 # Copy the JAR file of the Spring Boot application from the builder image into the container
 COPY target/airline-app.jar /app/airline-app.jar
